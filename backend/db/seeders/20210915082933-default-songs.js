@@ -6,7 +6,7 @@ module.exports = {
       {
         userId: 2,
         albumId: 1,
-        title: 'Oncle Jazz',
+        title: 'Living Together',
         songUrl:
           'https://mymusicdb.s3.us-east-2.amazonaws.com/songs/defaults/Men+I+Trust+-+Oncle+Jazz+-+01+Oncle+Jazz.mp3',
         imageUrl: 'https://i.ibb.co/w6Z1B6G/a3970465110-16.jpg',
@@ -43,7 +43,9 @@ module.exports = {
           'https://mymusicdb.s3.us-east-2.amazonaws.com/songs/defaults/Men+I+Trust+-+Oncle+Jazz+-+05+Found+Me.mp3',
         imageUrl: 'https://i.ibb.co/w6Z1B6G/a3970465110-16.jpg',
       },
-    }
+    ]
+  }
+}
 
   down: (queryInterface, Sequelize) => {
     /*
