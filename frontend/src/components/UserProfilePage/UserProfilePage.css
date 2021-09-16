@@ -1,0 +1,58 @@
+/* logo */
+
+.logo{
+position: absolute;
+width: 184px;
+height: 46px;
+left: 16px;
+top: 21px;
+
+background: #C4C4C4;
+}
+
+div.header{
+position: absolute;
+width: 1440px;
+height: 67px;
+left: 16px;
+top: 0px;
+
+background: #333333;
+}
+
+.userContainer{
+position: absolute;
+width: 307.27px;
+height: 31px;
+left: 1120px;
+top: 29px;
+
+background: #E8E6E3;
+}
+
+
+.createAccountButton{
+
+position: absolute;
+width: 129.19px;
+height: 30px;
+left: 1209px;
+top: 30px;
+
+background: #CC4400;
+border: 1px solid #B33B00;
+box-sizing: border-box;
+}
+
+.loginButton{
+position: absolute;
+width: 74.72px;
+height: 30px;
+left: 1120px;
+top: 30px;
+
+background: #E8E6E3;
+border: 1px solid #626262;
+box-sizing: border-box;
+
+}
