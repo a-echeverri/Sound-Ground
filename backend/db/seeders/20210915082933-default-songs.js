@@ -2,57 +2,61 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    const defaultSongs = [
+    return queryInterface.bulkInsert( 'Songs', [
       {
-        userId: 2,
-        albumId: 1,
+        userId: 7,
+        albumId: 31,
+        url: 'https://hosted-songs.s3.us-west-1.amazonaws.com/Thriller%2BRemix+-+Eric+Prydz.mp3',
+        title: 'Thriller Remix',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 7,
+        albumId: 32,
+        url: 'https://hosted-songs.s3.us-west-1.amazonaws.com/Thriller%2BRemix+-+Eric+Prydz.mp3',
+        title: 'Killing In The Name Of Remix',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 8,
+        albumId: 33,
+        url: 'https://hosted-songs.s3.us-west-1.amazonaws.com/Killing%2BIn%2BThe%2BName%2B(RATM%2BRemix)+-+deadmau5.mp3',
         title: 'Living Together',
-        songUrl:
-          'https://mymusicdb.s3.us-east-2.amazonaws.com/songs/defaults/Men+I+Trust+-+Oncle+Jazz+-+01+Oncle+Jazz.mp3',
-        imageUrl: 'https://i.ibb.co/w6Z1B6G/a3970465110-16.jpg',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
-        userId: 2,
-        albumId: 1,
-        title: 'Norton Commander (Album V)',
-        songUrl:
-          'https://mymusicdb.s3.us-east-2.amazonaws.com/songs/defaults/Men+I+Trust+-+Oncle+Jazz+-+02+Norton+Commander+(album+v).mp3',
-        imageUrl: 'https://i.ibb.co/w6Z1B6G/a3970465110-16.jpg',
+        userId: 8,
+        albumId: 34,
+        url: 'https://hosted-songs.s3.us-west-1.amazonaws.com/Killing%2BIn%2BThe%2BName%2B(RATM%2BRemix)+-+deadmau5.mp3',
+        title: 'Test1',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
-        userId: 2,
-        albumId: 1,
-        title: 'Days Go By',
-        songUrl:
-          'https://mymusicdb.s3.us-east-2.amazonaws.com/songs/defaults/Men+I+Trust+-+Oncle+Jazz+-+03+Days+Go+By.mp3',
-        imageUrl: 'https://i.ibb.co/w6Z1B6G/a3970465110-16.jpg',
+        userId: 9,
+        albumId: 35,
+        url: 'https://hosted-songs.s3.us-west-1.amazonaws.com/Killing%2BIn%2BThe%2BName%2B(RATM%2BRemix)+-+deadmau5.mp3',
+        title: 'Test2',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
-        userId: 2,
-        albumId: 1,
-        title: 'Tailwhip (Album V)',
-        songUrl:
-          'https://mymusicdb.s3.us-east-2.amazonaws.com/songs/defaults/Men+I+Trust+-+Oncle+Jazz+-+04+Tailwhip+(album+v).mp3',
-        imageUrl: 'https://i.ibb.co/w6Z1B6G/a3970465110-16.jpg',
+        userId: 9,
+        albumId: 36,
+        url: 'https://hosted-songs.s3.us-west-1.amazonaws.com/Thriller%2BRemix+-+Eric+Prydz.mp3',
+        title: 'Test3',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
-      {
-        userId: 2,
-        albumId: 1,
-        title: 'Found Me',
-        songUrl:
-          'https://mymusicdb.s3.us-east-2.amazonaws.com/songs/defaults/Men+I+Trust+-+Oncle+Jazz+-+05+Found+Me.mp3',
-        imageUrl: 'https://i.ibb.co/w6Z1B6G/a3970465110-16.jpg',
-      },
-    ]
-  }
-}
+    ],
+    {}
+  );
+ },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+    return queryInterface.bulkDelete('Songs', null, {});
+  }
 };
