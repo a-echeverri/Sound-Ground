@@ -1,119 +1,110 @@
 import { csrfFetch } from './csrf';
 
-const SET_SONG = 'song/setSong';
-const SET_FEATURED = 'song/setFeatured';
-const DELETE_SONG = 'song/deleteSong';
-const UPDATE_SONG = 'song/updateSong';
-const CREATE_SONG = 'song/createSong';
-const CREATE_COMMENT = 'song/createComment';
+const SET_SONG = 'song/SET_SONG';
+const LOAD = 'song/LOAD';
+const ADD_SONG = 'song/ADD_SONG';
+const ADD = 'song/ADD';
+const DELETE_SONG = 'song/DELETE_SONG';
+const UPDATE_SONG = 'song/UPDATE_SONG';
 
-const setSong = (song) => {
+
+const setSong = song => ({
+	type: SET_SONG,
+	song,
+});
+
+const load = songs => ({
+	type: LOAD,
+	songs
+});
+
+const addSong = newSong => ({
+	type: ADD,
+	newSong
+});
+
+const remove = song => {
 	return {
-		type: SET_SONG,
+		type: DELETE_SONG,
 		payload: song,
 	};
 };
 
-export const deleteSong = (song) => async (dispatch) => {
-	const { songId } = song;
+export const getSongs = () => async(dispatch) => {
+	const response = await csrfFetch('/api/songs');
+
+	if(response.ok) {
+		const songs = await response.json();
+		dispatch(load(songs))
+	}
+
+}
+
+export const createSong = data => async(dispatch) => {
 	const response = await csrfFetch('/api/songs', {
-		method: 'DELETE',
-		body: JSON.stringify({
-			songId,
-		}),
-	});
-	const data = await response.json();
-	return response;
+		method: "POST",
+		headers: { "Content-Type": "application/json"},
+		body: JSON.stringify(data)
+	})
+
+	if(response.ok) {
+		const newSong = await response.json();
+		dispatch(addSong(newSong));
+		return newSong;
+	}
+}
+
+export const deleteSong = () => async (dispatch) => {
+	const response = await csrfFetch('/api/songs/:songId')
+	
+	if(response.ok) {
+		const song = await response.json();
+		dispatch(remove(song))
+	}
 };
 
-export const createComment = (comment) => async (dispatch) => {
-	const { body, songId, userId } = comment;
-	const response = await csrfFetch('/api/comments', {
-		method: 'POST',
-		body: JSON.stringify({
-			userId,
-			songId,
-			body,
-		}),
-	});
-	const data = await response.json();
-	return response;
-};
+export const getUserSongs = (id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/users/${id}/songs`)
 
-export const editComment = (comment) => async (dispatch) => {
-	const { body, commentId } = comment;
-	const response = await csrfFetch('/api/comments', {
-		method: 'PUT',
-		body: JSON.stringify({ body, commentId }),
-	});
-	const data = await response.json();
-	return response;
-};
+    if(response.ok) {
+        const songs = await response.json()
+        dispatch(load(songs))
+    }
+}
 
-export const deleteComment = (comment) => async (dispatch) => {
-	const { commentId } = comment;
-	const response = await csrfFetch('/api/comments', {
-		method: 'DELETE',
-		body: JSON.stringify({ commentId }),
-	});
-	const data = await response.json();
-	return response;
-};
+// export const uploadSong = (song) => async (dispatch) => {
+// 	const { userId, albumId, url, title, songUrl, imageUrl, songId } = song;
+// 	const response = await csrfFetch('/api/songs', {
+// 		method: 'POST',
+// 		body: JSON.stringify({
+// 			userId,
+// 			albumId,
+// 			url,
+// 			title,
+// 			songUrl,
+// 			imageUrl,
+// 			songId,
+// 		}),
+// 	});
+// 	dispatch(setSong(data));
+// 	const data = await response.json();
+// 	return response;
+// };
 
-export const uploadSong = (song) => async (dispatch) => {
-	const { userId, albumId, url, title, songUrl, imageUrl, songId } = song;
-	const response = await csrfFetch('/api/songs', {
-		method: 'POST',
-		body: JSON.stringify({
-			userId,
-			albumId,
-			url,
-			title,
-			songUrl,
-			imageUrl,
-			songId,
-		}),
-	});
-	dispatch(setSong(data));
-	const data = await response.json();
-	return response;
-};
 
-const setFeatured = (songs) => {
-	return {
-		type: SET_FEATURED,
-		payload: songs,
-	};
-};
+const songReducer = (state, action) => {
+	
+	let newState;
 
-export const fetchSong = (song) => async (dispatch) => {
-	const songId = song;
-	const response = await csrfFetch(`/api/songs/${songId}`, {
-		method: 'GET',
-	});
-	const data = await response.json();
-	dispatch(setSong(data));
-	return data;
-};
-
-export const fetchFeatured = () => async (dispatch) => {
-	const response = await csrfFetch('/api/songs/feed', {
-		method: 'GET',
-	});
-	const data = await response.json();
-	dispatch(setFeatured(data));
-	return data;
-};
-
-const initialState = { song: null, songs: null };
-
-const songReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case SET_SONG:
-			return { ...state, song: action.payload };
-		case SET_FEATURED:
-			return { ...state, songs: action.payload };
-
+		case LOAD:
+			newState = {...state}
+			newState.songs = action.songs
+			return newState;
+		case DELETE_SONG:
+			return { ...state, [action.payload.song]: action.payload };
+		case ADD:
+			return { ...state, [action.payload.id]: action.payload };
 		default:
 			return state;
 	}

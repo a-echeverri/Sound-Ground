@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
-import SignupFormPage from "./components/SignupFormPage";
-import LandingPage from "./components/LandingPage";
-import FeedPage from "./components/FeedPage";
-import Discover from "./components/Discover";
-import AboutPage from "./components/AboutPage";
-import SongPage from "./components/SongPage";
-import UploadPage from "./components/UploadPage";
-import AlbumPage from "./components/AlbumPage";
+// import LoginFormPage from "./components/LoginFormModal";
+// import SignupFormPage from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
-import UserProfilePage from "./components/UserProfilePage";
 import Navigation from "./components/Navigation";
-import Player from "./components/AudioPlayer";
+
+import HomePage from "./components/HomePage";
+import SongPage from "./components/SongPage";
+
+import AudioPlayer from "./components/AudioPlayer";
 
 
 function App() {
@@ -29,40 +25,15 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            <LandingPage />
-            <Player />		 
+            <HomePage />
+            <AudioPlayer />
 					</Route>
-          <Route path="/login">
-            <LoginFormPage />
+          <Route path="/player">
+            <AudioPlayer />
           </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-					<Route path="/discover">
-						<Discover />
-            <Player />
-					</Route>
-					<Route path="/about">
-						<AboutPage />
-            <Player />
-					</Route>
-					<Route path="/upload">
-						<UploadPage />
-					</Route>
-					<Route path="/albums/:albumId">
-						<AlbumPage />
-            <Player />
-					</Route>
-					<Route path="/search/:searchTerm">
-						<FeedPage />
-					</Route>
 					<Route path="/songs/:songId">
 						<SongPage />
-            <Player />
-					</Route>
-					<Route path="/users/:username">
-						<UserProfilePage />
-            <Player />
+            <AudioPlayer />
 					</Route>
         </Switch>
       )}
