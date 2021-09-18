@@ -8,10 +8,10 @@ const DELETE_SONG = 'song/DELETE_SONG';
 const UPDATE_SONG = 'song/UPDATE_SONG';
 
 
-const setSong = song => ({
-	type: SET_SONG,
-	song,
-});
+// const setSong = song => ({
+// 	type: SET_SONG,
+// 	song,
+// });
 
 const load = songs => ({
 	type: LOAD,
@@ -92,21 +92,21 @@ export const getUserSongs = (id) => async(dispatch) => {
 // };
 
 
-const songReducer = (state, action) => {
+const songReducer = (state = {}, action) => {
 	
 	let newState;
 
 	switch (action.type) {
+		case ADD:
+			return { ...state, [action.id]: action.payload };
 		case LOAD:
 			newState = {...state}
 			newState.songs = action.songs
 			return newState;
 		case DELETE_SONG:
-			return { ...state, [action.payload.song]: action.payload };
-		case ADD:
-			return { ...state, [action.payload.id]: action.payload };
+			return { ...state, [action.song]: action.payload };
 		default:
-			return state;
+			return {state};
 	}
 };
 

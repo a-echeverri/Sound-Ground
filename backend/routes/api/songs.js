@@ -38,9 +38,13 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 // POST new song
 router.post('/', asyncHandler(async (req, res) => {
-    const song = await Song.create(req.body);
+    const { userId, title, album, url } = req.body
+    const song = await Song.create({ userID, title, album, url});
     res.json(song)
 }));
+
+// Put 
+router.put('/:id', asyncHandler(async (req, res) =
 
 // DELETE song by id
 router.delete('/:id', asyncHandler(async (req, res) => {

@@ -8,8 +8,10 @@ import Navigation from "./components/Navigation";
 
 import HomePage from "./components/HomePage";
 import SongPage from "./components/SongPage";
+import UserProfilePage from "./components/UserProfilePage";
 
 import AudioPlayer from "./components/AudioPlayer";
+import { getSongs } from "./store/song";
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(getSongs());
   }, [dispatch]);
 
   return (
@@ -26,14 +29,16 @@ function App() {
         <Switch>
           <Route exact path="/">
             <HomePage />
-            <AudioPlayer />
+            {/* <AudioPlayer /> */}
 					</Route>
           <Route path="/player">
-            <AudioPlayer />
+            {/* <AudioPlayer /> */}
           </Route>
 					<Route path="/songs/:songId">
 						<SongPage />
-            <AudioPlayer />
+					</Route>
+          <Route path="/user">
+						{/* <UserProfilePage /> */}
 					</Route>
         </Switch>
       )}

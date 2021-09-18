@@ -11,7 +11,7 @@ body {
 	overflow: hidden;
 }
 
-#nav-bar {
+.nav-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,6 +21,8 @@ body {
     background-color: #333;
     padding: 0;
     margin: 0;
+    border: #261c2c;
+    border-style: solid;
 }
 header {
 	position: absolute;
@@ -40,6 +42,12 @@ header .hero-logo {
 	font-size: 2em;
 	text-transform: uppercase;
 	letter-spacing: 2px;
+}
+
+.NavLink {
+    color:rgba(0, 0, 0, 0.5);
+    border: #261c2c;
+    border-style: solid;
 }
 
 header ul {

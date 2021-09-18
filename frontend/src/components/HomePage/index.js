@@ -11,7 +11,7 @@ export default function HomePage() {
 	return (
 		<div className="home-page">
 			<div>
-				<h1>H1</h1>
+				<h1>SoundGround</h1>
 			</div>	
 			<div className="homepage-text">Test</div>
 		</div>
