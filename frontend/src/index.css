@@ -1,17 +1,58 @@
 body {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+	user-select: none;
 }
 .audio-player-footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 96px;
-    background-color: white;
-    /* border:
-    border: top; */
+    height: 80px;
+    fill: rgb(255, 85, 0);
+} 
+
+
+button.rhap_button-clear{
+    /* fill: rgb(255, 85, 0);
+    background-color:rgb(255, 85, 0) ; */
 }
+
+button.rhap_main-controls-button{
+    /* fill: rgb(255, 85, 0); */
+    /* background-color:rgb(255, 85, 0) ; */
+}
+
+button.rhap_play-pause-button{
+    /* fill: rgb(255, 85, 0); */
+    color: rgb(255, 85, 0);
+    /* theme-color: rgb(255, 85, 0); */
+    /* background-color:rgb(255, 85, 0) ; */
+}
+
+div.rhap_progress-bar {
+    color: rgb(255, 85, 0);
+    fill: rgb(255, 85, 0);
+    background-color:rgb(255, 85, 0) ;
+}
+div.rhap_progress-bar-show-download{
+    color: rgb(255, 85, 0);
+    fill: rgb(255, 85, 0);
+    background-color:rgb(255, 85, 0) ;
+
+}
+div.rhap_progress-indicator{
+    color: rgb(255, 85, 0);
+    fill: rgb(255, 85, 0);
+    background-color:rgb(255, 85, 0) ;
+}
+div.rhap_progress-filled{
+    color: rgb(255, 85, 0);
+    fill: rgb(255, 85, 0);
+    background-color:rgb(255, 85, 0) ;
+}
+
 
 /* #root {
 

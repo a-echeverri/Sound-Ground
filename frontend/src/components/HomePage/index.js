@@ -13,7 +13,8 @@ export default function HomePage() {
 			<div>
 				<h1>SoundGround</h1>
 			</div>	
-			<div className="homepage-text">Test</div>
+			<p className="homepage-text">What's next in music is first on SoundGroud </p>
+			<p className="homepage-text2">Upload your first track and begin your journey. SoundGround gives you space to create, find your fans, and connect with other artists.</p>
 		</div>
 	);
 };

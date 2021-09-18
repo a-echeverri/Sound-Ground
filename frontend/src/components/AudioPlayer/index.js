@@ -7,6 +7,7 @@ const Player = () => (
     src="https://hosted-songs.s3.us-west-1.amazonaws.com/Thriller%2BRemix+-+Eric+Prydz.mp3"
     onPlay={e => console.log("onPlay")}
     // other props here
+    
   />;
   </div>
 );

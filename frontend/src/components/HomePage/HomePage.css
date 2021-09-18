@@ -1,3 +1,18 @@
-.home-page {
-	color: red
+h1 {
+	color: #333;
+	font-family: 'Biryani', sans-serif;
+	display: flex;
+	justify-content: center;
+
+}
+
+.homepage-text {
+	color:#999;
+	font-family: 'Lato', sans-serif;
+	/* font-family: 'Biryani', sans-serif; */
+}
+.homepage-text2 {
+	color:#999;
+	font-family: 'Lato', sans-serif;
+	/* font-family: 'Biryani', sans-serif; */
 }

@@ -14,38 +14,37 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <li>
+      <div className="homepage-nav">
+        <h1 className="nav-logo">
+        <NavLink exact to="/">SoundGround</NavLink>
+        </h1>
         <NavLink to="/user">User</NavLink>
-      </li>
-      <li>
         <NavLink to="/songs">Songs</NavLink>
-      </li>
-      <li>
         <NavLink to="/upload">Upload</NavLink>
-      </li>
-      <li>
-        <NavLink to={`{/users/${sessionUser.username}`}>{sessionUser.username}</NavLink>
-      </li>
-      <li>
         <ProfileButton user={sessionUser} />
-      </li>
+        <NavLink to={`/users/${sessionUser.username}`}>{sessionUser.username}</NavLink>
+        
+      </div>
       </>
     );
   } else {
     sessionLinks = (
       <>
+      <div className="signin-container">
         <LoginFormModal />
         <SignupFormModal />
+      </div>
       </>
     );
   }
 
   return (
     <div className="nav-bar">
-      <header>
-        <NavLink exact to="/">SoundGround</NavLink>
+      <h1 className="nav-logo">
+        SoundGround
+      {/* <NavLink exact to="/">SoundGround</NavLink> */}
+      </h1>
         {isLoaded && sessionLinks}
-      </header>
     </div>
   );
 }
