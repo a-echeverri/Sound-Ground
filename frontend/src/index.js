@@ -9,8 +9,6 @@ import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from "./store/session";
 import { ModalProvider } from "./context/Modal";
 
-import AudioPlayer from "./components/AudioPlayer"
-
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
@@ -27,7 +25,6 @@ function Root() {
       <ModalProvider>
         <BrowserRouter>
           <App />
-          <AudioPlayer />
         </BrowserRouter>
       </ModalProvider>
     </Provider>
@@ -37,7 +34,6 @@ function Root() {
 ReactDOM.render(
   <React.StrictMode>
     <Root />
-    {/* <AudioPlayer /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

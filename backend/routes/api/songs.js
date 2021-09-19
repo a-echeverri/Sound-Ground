@@ -1,8 +1,9 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { User, Song, Album } = require('../../db/models');
+const { restoreUser } = '../../utils/auth'
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
-const { User, Song} = require('../../db/models');
 
 const router = express.Router();
 
@@ -21,50 +22,38 @@ const router = express.Router();
 
 // get all songs in the database
 router.get('/', asyncHandler(async (req, res) => {
-    const songs = await Song.findAll({
-      include: User
-    });
+    const songs = await Song.findAll({include: User, Album})
   
     res.json(songs);
-  }),
-);
+}));
 
 // get specific song
 router.get('/:id', asyncHandler(async (req, res) => {
-    const song = await Song.findByPk(req.params.id)
+    const song = await Song.findByPk(req.params.id, {include: User, Album})
  
     res.json(song)
 }));
 
-// POST new song
+// create new song
 router.post('/', asyncHandler(async (req, res) => {
     const { userId, title, album, url } = req.body
-    const song = await Song.create({ userID, title, album, url});
+    const song = await Song.create({ userId, title, album, url});
     res.json(song)
 }));
 
-// Put 
-router.put('/:id', asyncHandler(async (req, res) =
+// update a song
+router.put('/:id', asyncHandler(async (req, res) => {
+  const song = await Song.findByPk(req.params.id);
+  const { userId, title, album, url } = req.body;
+  const updatedSong = await song.update({ userId, title, album, url});
+  res.json(updatedSong)
+}));
 
-// DELETE song by id
+// delete specific song
 router.delete('/:id', asyncHandler(async (req, res) => {
     const song = await Song.findByPk(req.params.id)
     await song.destroy();
     res.json(song);
 }));
 
-  
-// //get a specific song in the database
-// router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
-//   const specificSong = await Song.findByPk(req.params.id, {
-//       include: User
-//     });
-  
-//     if (specificSong) {
-//       return res.json({
-//         specificSong
-//       })
-//     } else {
-//       next(new Error("Song not found"));
-//     }; 
-// }));
+module.exports = router;

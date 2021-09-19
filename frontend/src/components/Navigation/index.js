@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import UploadFormPage from '../UploadFormPage';
 import './Navigation.css';
 
 
@@ -14,25 +15,30 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <div className="homepage-nav">
-        <h1 className="nav-logo">
-        <NavLink exact to="/">SoundGround</NavLink>
-        </h1>
-        <NavLink to="/user">User</NavLink>
-        <NavLink to="/songs">Songs</NavLink>
-        <NavLink to="/upload">Upload</NavLink>
+      <div>
         <ProfileButton user={sessionUser} />
-        <NavLink to={`/users/${sessionUser.username}`}>{sessionUser.username}</NavLink>
-        
       </div>
+        <button type="button" className="user-button">
+        <ProfileButton user={sessionUser} />
+        </button>
+        <button type="button" className="user-button">
+        <NavLink to={`/users/${sessionUser.username}`}>{sessionUser.username}</NavLink>
+        </button>
       </>
     );
   } else {
     sessionLinks = (
       <>
+      <div className="landing-nav">
+        <div className="landing-nav-left">
+        {/* <h1 className="landing-logo">SoundGround</h1> */}
+        </div>
+      <div className="landing-nav-right">
       <div className="signin-container">
         <LoginFormModal />
         <SignupFormModal />
+      </div>
+      </div>
       </div>
       </>
     );
@@ -40,11 +46,24 @@ function Navigation({ isLoaded }){
 
   return (
     <div className="nav-bar">
-      <h1 className="nav-logo">
-        SoundGround
-      {/* <NavLink exact to="/">SoundGround</NavLink> */}
-      </h1>
+      <div className="nav-bar-left">
+      <button type="button" className="nav-logo">
+      <NavLink exact to="/">SoundGround</NavLink>
+      </button>
+      </div>
+      <div className="nav-bar-right">
+        <button type="button" className="user-button">
+        <NavLink to="/user">User</NavLink>
+        </button>
+        <button type="button" className="songs-button">
+        <NavLink to="/songs">Stream</NavLink>
+        </button>
+        <button type="button" className="upload-button">
+        {/* <NavLink to="/upload">Upload</NavLink> */}
+        <UploadFormPage />
+        </button>
         {isLoaded && sessionLinks}
+      </div>
     </div>
   );
 }

@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-// import LoginFormPage from "./components/LoginFormModal";
-// import SignupFormPage from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-
 import HomePage from "./components/HomePage";
 import SongPage from "./components/SongPage";
+import AllSongsPage from "./components/AllSongsPage";
+import AlbumPage from "./components/SongPage";
+// import AllAlbumsPage from "./components/AllAlbumsPage";
 import UserProfilePage from "./components/UserProfilePage";
-
+import UploadFormPage from "./components/UploadFormPage";
 import AudioPlayer from "./components/AudioPlayer";
-import { getSongs } from "./store/song";
-
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    dispatch(getSongs());
   }, [dispatch]);
 
   return (
@@ -29,17 +26,36 @@ function App() {
         <Switch>
           <Route exact path="/">
             <HomePage />
-            {/* <AudioPlayer /> */}
+            <AudioPlayer />
 					</Route>
-          <Route path="/player">
-            {/* <AudioPlayer /> */}
+          <Route exact path="/songs">
+            <AllSongsPage />
+            <AudioPlayer />
           </Route>
-					<Route path="/songs/:songId">
+					<Route exact path="/songs/:id">
 						<SongPage />
+            <AudioPlayer />
 					</Route>
-          <Route path="/user">
-						{/* <UserProfilePage /> */}
+          <Route exact path="/user/:id">
+						<UserProfilePage />
+            <AudioPlayer />
 					</Route>
+          {/* <Route exact path="/albums">
+            <AllAlbumsPage />
+            <AudioPlayer />
+          </Route> */}
+          <Route exact path="/albums/:id">
+            <AlbumPage />
+            <AudioPlayer />
+          </Route>
+          {/* <Route exact path="/signup">
+            <SignupFormPage />
+            <AudioPlayer />
+          </Route> */}
+          <Route exact path="/upload">
+            <UploadFormPage />
+            <AudioPlayer />
+          </Route>
         </Switch>
       )}
     </>

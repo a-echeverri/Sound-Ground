@@ -20,12 +20,12 @@ export const fetchUser = (user) => async (dispatch) => {
 	return data;
 };
 
-const initialState = { currUser: null };
+const initialState = { user: null };
 
 const userReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SET_CURRENT_USER:
-			return { ...state, currUser: action.payload };
+			return { ...state, user: action.payload };
 		default:
 			return state;
 	}

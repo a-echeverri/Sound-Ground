@@ -1,13 +1,14 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
-import songReducer from "./song";
-import albumReducer from "./album";
+import song from "./song";
+// import albumReducer from "./album";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  song: songReducer,
-  album: albumReducer,
+  song
+  // song: songReducer,
+  // album: albumReducer,
 
 });
 
