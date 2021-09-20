@@ -23,15 +23,15 @@ const router = express.Router();
 // get all songs in the database
 router.get('/', asyncHandler(async (req, res) => {
     const songs = await Song.findAll({include: User, Album})
-  
+    // console.log(songs);
     res.json(songs);
 }));
 
 // get specific song
 router.get('/:id', asyncHandler(async (req, res) => {
     const song = await Song.findByPk(req.params.id, {include: User, Album})
- 
-    res.json(song)
+    console.log(song);
+    res.json(song);
 }));
 
 // create new song

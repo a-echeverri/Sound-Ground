@@ -36,7 +36,7 @@ function App() {
 						<SongPage />
             <AudioPlayer />
 					</Route>
-          <Route exact path="/user/:id">
+          <Route exact path="/users/:id">
 						<UserProfilePage />
             <AudioPlayer />
 					</Route>

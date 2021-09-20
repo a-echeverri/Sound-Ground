@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const CREATE_SONG = 'song/CREATE_SONG';
 const SET_SONG = 'song/SET_SONG';
-const EDIT_SONG = 'song/EDIT_SONG';
+// const EDIT_SONG = 'song/EDIT_SONG';
 const REMOVE_SONG = 'song/REMOVE_SONG';
 const SET_SONGS = 'song/SET_SONGS';
 
@@ -28,26 +28,19 @@ const setSong = song => {
 // 	}
 // };
 
-// const removeSong = (song) => {
-// 	return {
-// 		type: REMOVE_SONG,
-// 		payload: song
-// 	}
-// };
+const removeSong = (song) => {
+	return {
+		type: REMOVE_SONG,
+		payload: song
+	}
+};
 
 const setSongs = (songs) => {
 	return {
 		type: SET_SONGS,
 		payload: songs
 	}
-}
-
-// const remove = song => {
-// 	return {
-// 		type: DELETE_SONG,
-// 		payload: song,
-// 	};
-// };
+};
 
 export const addSong = song => async(dispatch) => {
 	let response = await csrfFetch('/api/songs', {
@@ -88,30 +81,38 @@ export const getSong = (id) => async(dispatch) => {
 // 	return response;
 // }
 
-// export const deleteSong = () => async (dispatch) => {
-// 	const response = await csrfFetch('/api/songs/:songId')
+export const deleteSong = (songId) => async (dispatch) => {
+	const response = await csrfFetch(`/api/songs/${songId}`, {
+		method: 'DELETE'
+	});
 	
-// 	if(response.ok) {
-// 		const song = await response.json();
-// 		dispatch(removeSong(song))
-// 	}
-// };
+	if(response.ok) {
+		const song = await response.json();
+		dispatch(removeSong(song))
+		dispatch(setSongs());
+		return response;
+	}
+};
 
 export const getSongs = () => async (dispatch) => {
 	const response = await csrfFetch('/api/songs');
-	const songs = await response.json();
-	dispatch(setSongs(songs));
+	
+	if(response.ok) {
+		const songs = await response.json();
+		dispatch(setSongs(songs))
+		
+	}
 	return response;
 }
 
-// export const getUserSongs = (id) => async(dispatch) => {
-//     const response = await csrfFetch(`/api/users/${id}/songs`)
+export const getUserSongs = (id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/users/${id}`)
 
-//     if(response.ok) {
-//         const songs = await response.json()
-//         dispatch(load(songs))
-//     }
-// }
+    if(response.ok) {
+        const songs = await response.json()
+        dispatch(setSongs(songs))
+    }
+}
 
 
 let initialState = {}
@@ -126,6 +127,9 @@ const songReducer = (state = initialState, action) => {
 		case SET_SONG:
 			newState.song = action.payload;
 			return newState;
+		case REMOVE_SONG:
+			newState.song = action.payload;
+			return newState;			
 		case SET_SONGS:
 			newState.songs = action.payload;
 			return newState;

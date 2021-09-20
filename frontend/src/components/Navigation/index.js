@@ -15,13 +15,13 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <div>
+      {/* <div>
         <ProfileButton user={sessionUser} />
-      </div>
+      </div> */}
         <button type="button" className="user-button">
         <ProfileButton user={sessionUser} />
         </button>
-        <button type="button" className="user-button">
+        <button type="button" className="user-page-button">
         <NavLink to={`/users/${sessionUser.username}`}>{sessionUser.username}</NavLink>
         </button>
       </>
@@ -53,7 +53,7 @@ function Navigation({ isLoaded }){
       </div>
       <div className="nav-bar-right">
         <button type="button" className="user-button">
-        <NavLink to="/user">User</NavLink>
+        <NavLink to="/users">User</NavLink>
         </button>
         <button type="button" className="songs-button">
         <NavLink to="/songs">Stream</NavLink>
