@@ -34,10 +34,10 @@ function UploadForm({ setShowModal }) {
     }
   };
 
-  const updateFile = (e) => {
-    const file = e.target.files[0];
-    if (file) setUrl(file);
-  };
+  // const updateFile = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) setUrl(file);
+  // };
   return (
     <div className="upload-div">
       <h2>Upload New Song</h2>
@@ -69,6 +69,15 @@ function UploadForm({ setShowModal }) {
             name="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
+          />
+        </label>
+        <label>
+          Album Name:
+          <input
+            type="text"
+            name="album"
+            value={album}
+            onChange={(e) => setAlbum(e.target.value)}
           />
         </label>
 

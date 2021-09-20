@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory, Link} from "react-router-dom"
+import { useParams, useHistory} from "react-router-dom"
 import { getSong, deleteSong, updateSong } from "../../store/song";
-import AudioPlayer from "../AudioPlayer";
-import Player from "../AudioPlayer";
+import "./SongPage.css";
+
+// import AudioPlayer from "../AudioPlayer";
+
 
 function SongPage() {
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ function SongPage() {
 
   const song = useSelector(state => state.song.song);
 
-  const [source, setSource] = useState('');
+  // const [source, setSource] = useState('');
   
   useEffect(() => {
     dispatch(getSong(id))
@@ -23,6 +25,11 @@ function SongPage() {
       dispatch(deleteSong(+id));
       history.push('/songs');
     }
+
+  const handleEdit = () => {
+    dispatch(updateSong(+id));
+    history.push('/songs/');
+  }
   
   // useEffect(() => {
   //   setSource()
@@ -31,24 +38,25 @@ function SongPage() {
 
   return (
     <div className="song-page-div">
-      <div>{song?.title}</div>
-      <div>{song?.albumId}</div>
+      <div className="">Song Title: {song?.title}</div>
+      {/* <div>{song?.album}</div> */}
+      <div>Uploaded By User: {song?.User.userId}</div>
       <div>{song?.User.username}</div>
-      <div>{song?.User.userId}</div>
+      
       {/* <div>{song?.Album.title}</div> */}
       <div>
-        <button onClick={() => setSource(song?.url)} >Play Song</button>
+        {/* <button onClick={() => setSource(song?.url)} >Play Song</button> */}
         {/* {console.log(source)} */}
         {/* <AudioPlayer src={source}/> */}
         {/* {console.log("song url after navlink", song?.url)} */}
         {/* <AudioPlayer src={source} autoPlay>{console.log("src", song?.url)}</AudioPlayer> */}
         {/* <AudioPlayer src={song?.url} onPlay>{console.log("src", song?.url)}</AudioPlayer> */}
       </div>
-      <div>
-      <button onClick={''} >Edit Song {console.log('fix edit button')}</button>
+      <div className='edit-button-container'>
+      <button className='edit-button'onClick={handleEdit} >Edit Song </button>
       </div>
-      <div>
-      <button onClick={handleDelete}>Delete Song</button>
+      <div className='delete-button-container'>
+      <button className='delete-button' onClick={handleDelete}>Delete Song</button>
       </div>
       {/* <div>{song?.Album.title}</div> */}
     </div>
