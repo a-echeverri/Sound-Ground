@@ -3,7 +3,6 @@ import { Modal } from "../../context/Modal";
 import UploadForm from "./UploadForm";
 import LoginForm from "../LoginFormModal/LoginForm";
 import { useSelector } from "react-redux";
-import "../Navigation/Navigation.css";
 
 function UploadFormModal() {
   const [showModal, setShowModal] = useState(false);

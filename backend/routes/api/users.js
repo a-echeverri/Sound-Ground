@@ -121,4 +121,15 @@ router.get( "/:id",
   })
 );
 
+// get all a user's songs
+router.get('/', async(req, res) => {
+  const songs = await Song.findAll({
+    where: {
+      userId: req.params.userId,
+      albumId: null
+    }
+  })
+  res.json(songs);
+})
+
 module.exports = router;

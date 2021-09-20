@@ -26,7 +26,7 @@ body {
 }
 
 .nav-logo {
-  background: #ff5500;
+  background: rgb(255, 85, 0);
   width: 184px;
   height: 46px;
   margin: 0;
@@ -120,7 +120,7 @@ body {
   width: 118.19px;
   height: 26px;
   color: #fff;
-  background: rgb(255, 85, 0);
+  background: #ff5500;
   border: 1px solid rgb(255, 85, 0);
 }
 
@@ -139,32 +139,46 @@ body {
 }
 
 .profile-button-div {
-  border: none;
+  display: flex;
+  border-color: none;
+  align-items: center;
+  width: 133px;
+  height: 46px;
 }
 
 .profile-button {
+display: flex;
   border: none;
-  background: transparent;
+  background: none;
+  color: white;
 }
 .profile-dropdown {
   position: absolute;
   z-index: 1;
+  border: 1px rgb(51, 51, 51) solid;
+  width: 133px;
+  /* color: white; */
 }
 
 .profile-dropdown li {
-  margin: 0px;
-  text-decoration: none;
+  margin: 10px;
+  /* text-decoration: none; */
   list-style-type: none;
-}
-.profile-dropdown li:hover {
-  margin: 5px 5px;
+  color:black
 }
 
+ul.profile-dropdown {
+  background: white;
+}
+/* .profile-dropdown li:hover {
+  margin: 5px 5px;
+} */
+
 .profile-dropdown button {
-  border: 0;
-  border-radius: 5px;
+  border: none;
   padding: 5px 12px;
   background: rgb(255, 85, 0);
+  color: white;
 }
 
 .fas.fa-user-astronaut {
@@ -177,6 +191,6 @@ body {
 .fas.fa-user-astronaut:hover {
   cursor: pointer;
   background: rgb(255, 85, 0);
-  color: #261c2c;
-  border-radius: 20px;
+  color: white;
+  border-radius: 50px;
 }

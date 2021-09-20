@@ -14,17 +14,19 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        {/* <div>
-        <ProfileButton user={sessionUser} />
-      </div> */}
         <button type="button" className="user-button">
           <ProfileButton user={sessionUser} />
         </button>
-        <button type="button" className="user-page-button">
+        <div className="user-container">
+            <button type="button" className="user-button">
+            <NavLink to={`/users/${sessionUser.id}`}>Library</NavLink>
+            </button>
+            </div>
+        {/* <button type="button" className="user-page-button">
           <NavLink to={`/users/${sessionUser.username}`}>
             {sessionUser.username}
           </NavLink>
-        </button>
+        </button> */}
       </>
     );
   } else {
@@ -57,15 +59,14 @@ function Navigation({ isLoaded }) {
               <NavLink to="/songs">Stream</NavLink>
             </button>
           </div>
-          <div className="user-container">
+          {/* <div className="user-container">
             <button type="button" className="user-button">
             <NavLink to="/users">Library</NavLink>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="nav-bar-right">
-
         {isLoaded && sessionLinks}
         <button type="button" className="upload-button">
           <UploadFormModal />

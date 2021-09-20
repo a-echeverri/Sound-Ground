@@ -45,7 +45,7 @@ router.post('/', asyncHandler(async (req, res) => {
 router.put('/:id', asyncHandler(async (req, res) => {
   const song = await Song.findByPk(req.params.id);
   const { userId, title, album, url } = req.body;
-  const updatedSong = await Song.update({ userId, title, album, url});
+  const updatedSong = await song.update({ userId, title, album, url});
   res.json(updatedSong)
 }));
 
@@ -55,5 +55,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     await song.destroy();
     res.json(song);
 }));
+
+
 
 module.exports = router;

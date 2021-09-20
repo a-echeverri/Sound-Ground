@@ -28,7 +28,9 @@ function UploadForm({ setShowModal }) {
       dispatch(getSongs());
       setTitle("");
       setAlbum("");
-      setUrl([]);
+      setUrl("");
+      // setUrl([]);
+
     }
   };
 
@@ -56,19 +58,19 @@ function UploadForm({ setShowModal }) {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
-        <label>
-          <input type="file" onChange={updateFile} />
-        </label>
-
         {/* <label>
-          MP3 File:
+          <input type="file" onChange={updateFile} />
+        </label> */}
+
+        <label>
+          MP3 Url:
           <input
             type="text"
             name="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-        </label> */}
+        </label>
 
         <button type="submit">Submit</button>
       </form>
