@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link} from "react-router-dom"
-import { getSong, deleteSong } from "../../store/song";
+import { getSong, deleteSong, updateSong } from "../../store/song";
 import AudioPlayer from "../AudioPlayer";
 import Player from "../AudioPlayer";
 
 function SongPage() {
   const dispatch = useDispatch();
   const history = useHistory();
-  let { id }= useParams();
+  const { id }= useParams();
   
 
   const song = useSelector(state => state.song.song);
@@ -20,11 +20,10 @@ function SongPage() {
   },[dispatch, id]);
   
   const handleDelete = () => {
-    if (id) {
       dispatch(deleteSong(+id));
-      history.push('./songs');
+      history.push('/songs');
     }
-  }
+  
   // useEffect(() => {
   //   setSource()
   // })
@@ -45,7 +44,12 @@ function SongPage() {
         {/* <AudioPlayer src={source} autoPlay>{console.log("src", song?.url)}</AudioPlayer> */}
         {/* <AudioPlayer src={song?.url} onPlay>{console.log("src", song?.url)}</AudioPlayer> */}
       </div>
+      <div>
+      <button onClick={''} >Edit Song {console.log('fix edit button')}</button>
+      </div>
+      <div>
       <button onClick={handleDelete}>Delete Song</button>
+      </div>
       {/* <div>{song?.Album.title}</div> */}
     </div>
   )

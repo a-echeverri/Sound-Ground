@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const CREATE_SONG = 'song/CREATE_SONG';
 const SET_SONG = 'song/SET_SONG';
-// const EDIT_SONG = 'song/EDIT_SONG';
+const EDIT_SONG = 'song/EDIT_SONG';
 const REMOVE_SONG = 'song/REMOVE_SONG';
 const SET_SONGS = 'song/SET_SONGS';
 
@@ -21,12 +21,12 @@ const setSong = song => {
 	}
 };
 
-// const editSong = (song) => {
-// 	return {
-// 		type: EDIT_SONG,
-// 		payload: song
-// 	}
-// };
+const editSong = (song) => {
+	return {
+		type: EDIT_SONG,
+		payload: song
+	}
+};
 
 const removeSong = (song) => {
 	return {
@@ -72,17 +72,17 @@ export const getSong = (id) => async(dispatch) => {
 
 }
 
-// export const updateSong = song => async(dispatch) => {
-// 	const response = await csrfFetch(`/api/songs/${song.id}`, {
-// 		method: 'PUT',
-// 		body: JSON.stringify(song)
-// 	});
-// 	dispatch(editSong(song));
-// 	return response;
-// }
+export const updateSong = song => async(dispatch) => {
+	const response = await csrfFetch(`/api/songs/${song}`, {
+		method: 'PUT',
+		body: JSON.stringify(song)
+	});
+	dispatch(editSong(song));
+	return response;
+}
 
-export const deleteSong = (songId) => async (dispatch) => {
-	const response = await csrfFetch(`/api/songs/${songId}`, {
+export const deleteSong = (song) => async (dispatch) => {
+	const response = await csrfFetch(`/api/songs/${song}`, {
 		method: 'DELETE'
 	});
 	

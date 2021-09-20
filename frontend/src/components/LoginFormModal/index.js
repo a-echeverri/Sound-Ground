@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
-import LoginForm from './LoginForm';
-import './LoginForm.css';
+import React, { useState } from "react";
+import { Modal } from "../../context/Modal";
+import LoginForm from "./LoginForm";
+import "./LoginForm.css";
 
 function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button id="signin-button" onClick={() => setShowModal(true)}>Sign in</button>
+    {/* <div className="signin-button-container"> */}
+      <button className="signin-button" onClick={() => setShowModal(true)}>
+        Sign in
+      </button>
+    {/* </div> */}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />

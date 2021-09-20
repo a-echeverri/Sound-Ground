@@ -23,42 +23,4 @@
   background-color: white;
 }
 
-.signin{
-  position: absolute;
-  top:20px;
-  right: 30px;
 
-}
-
-#signin-button {
-  /* loginButton */
-  padding: 2px 15px;
-  line-height: 24px;
-  margin: 0 0 0 6px;
-  width: 74.72px;
-  height: 30px;
-  left: 1120px;
-  top: 30px;
-  background:transparent;
-  color: #fff;
-  border-color: #ccc;
-  border: 1px solid #626262;
-  box-sizing: border-box;
-}
-
-#create-account-button {
-  display: inline-block;
-  padding: 2px 15px;
-  position: relative;
-  font-size: 14px;
-  align-items: flex-start;
-  border-radius: 3px;
-  width: 129.19px;
-  height: 30px;
-  left: 1209px;
-  top: 30px;
-  color: #fff;
-  background: rgb(255, 85, 0);
-  border: 1px solid rgb(255, 85, 0);
-  box-sizing: border-box;
-}

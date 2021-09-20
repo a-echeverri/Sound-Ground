@@ -9,7 +9,6 @@ import AllSongsPage from "./components/AllSongsPage";
 import AlbumPage from "./components/SongPage";
 // import AllAlbumsPage from "./components/AllAlbumsPage";
 import UserProfilePage from "./components/UserProfilePage";
-import UploadFormPage from "./components/UploadFormPage";
 import AudioPlayer from "./components/AudioPlayer";
 
 function App() {
@@ -48,14 +47,7 @@ function App() {
             <AlbumPage />
             <AudioPlayer />
           </Route>
-          {/* <Route exact path="/signup">
-            <SignupFormPage />
-            <AudioPlayer />
-          </Route> */}
-          <Route exact path="/upload">
-            <UploadFormPage />
-            <AudioPlayer />
-          </Route>
+          <Route path='/'>Page Not Found</Route>
         </Switch>
       )}
     </>

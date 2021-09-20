@@ -1,11 +1,49 @@
-/* #create-account-button {
-display: flex;
-width: 129.19px;
-height: 30px;
-left: 1209px;
-top: 30px;
+.signup-form-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 375px;
+    height: 375px;
+}
 
-background: #CC4400;
-border: 1px solid #B33B00;
-box-sizing: border-box;
-} */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.email-label{
+    display: flex;
+    flex-direction: column;
+}
+.username-label{
+    display: flex;
+    flex-direction: column;
+}
+.confirm-password-label{
+    display: flex;
+    flex-direction: column;
+}
+.email-label{
+    display: flex;
+    flex-direction: column;
+}
+button.submit-button{
+    width: 300px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(255, 85, 0);
+    color: white;
+}
+
+button.demo-button {
+    width: 300px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(0, 59, 252);
+    color: white;
+}
