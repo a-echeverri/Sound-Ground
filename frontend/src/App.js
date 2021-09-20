@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
-import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import HomePage from "./components/HomePage";
+import SongPage from "./components/SongPage";
+import AllSongsPage from "./components/AllSongsPage";
+import AlbumPage from "./components/SongPage";
+// import AllAlbumsPage from "./components/AllAlbumsPage";
+import UserProfilePage from "./components/UserProfilePage";
+import AudioPlayer from "./components/AudioPlayer";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,12 +23,31 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login">
-            <LoginFormPage />
+          <Route exact path="/">
+            <HomePage />
+            <AudioPlayer />
+					</Route>
+          <Route exact path="/songs">
+            <AllSongsPage />
+            <AudioPlayer />
           </Route>
-          <Route path="/signup">
-            <SignupFormPage />
+					<Route exact path="/songs/:id">
+						<SongPage />
+            <AudioPlayer />
+					</Route>
+          <Route exact path="/users/:id">
+						<UserProfilePage />
+            <AudioPlayer />
+					</Route>
+          {/* <Route exact path="/albums">
+            <AllAlbumsPage />
+            <AudioPlayer />
+          </Route> */}
+          <Route exact path="/albums/:id">
+            <AlbumPage />
+            <AudioPlayer />
           </Route>
+          <Route path='/'>Page Not Found</Route>
         </Switch>
       )}
     </>

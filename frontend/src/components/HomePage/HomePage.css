@@ -1,0 +1,94 @@
+.homepage{
+	display: block;
+}
+
+.homepage-content{
+	 background-image: url("../../\tame-impala.jpeg"); 
+	background-size: fill;
+	 width: 100%;
+	min-height: 100vh;
+}
+.app-name-container {
+	color: white;
+	font-family: 'Biryani', sans-serif;
+	display: flex;
+	justify-content: center;
+	font-size: 100px;
+	font-weight: 500;
+	animation: moveToTop;
+	animation-duration: 3s;
+
+
+}
+
+.homepage-text {
+	display: flex;
+	justify-content: center;
+	color:#999;
+	font-family: 'Lato', sans-serif;
+	color: white;
+	font-size: 40px;
+	animation: moveToRight;
+	animation-duration: 5s;
+	/* font-family: 'Biryani', sans-serif; */
+}
+.homepage-text2 {
+	display: flex;
+	justify-content: center;
+	color: white;
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	padding-top: 40px;
+	animation: moveToLeft;
+	animation-duration: 5s;
+	/* font-family: 'Biryani', sans-serif; */
+}
+
+@keyframes moveToRight {
+	0% {
+	  opacity: 0%;
+	  transform: translateX(-500px);
+	}
+  
+	80% {
+	  transform: translateX(10px);
+	}
+  
+	100% {
+	  opacity: 100%;
+	  transform: translateX(0px);
+	}
+  }
+  
+  @keyframes moveToLeft {
+	0% {
+	  opacity: 0%;
+	  transform: translateX(500px);
+	}
+  
+	80% {
+	  transform: translateX(-10px);
+	}
+  
+	100% {
+	  opacity: 100%;
+	  transform: translateX(0px);
+	}
+  }
+  
+  @keyframes moveToTop {
+	0% {
+	  opacity: 0%;
+	  transform: translateY(200px);
+	}
+  
+	80% {
+	  transform: translateY(-1px);
+	}
+  
+	100% {
+	  opacity: 100%;
+	  transform: translateY(0px);
+	}
+  }
+  
